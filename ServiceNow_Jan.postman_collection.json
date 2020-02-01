@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "44cf570e-145b-4243-85ed-be742a714cb0",
+		"name": "ServiceNow_Jan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Incidents",
+			"item": [
+				{
+					"name": "Get all Incident Numbers",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Tuna@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dev57390.service-now.com/api/now/v2/table/incident?sysparm_fields=number,priority,urgency",
+							"protocol": "https",
+							"host": [
+								"dev57390",
+								"service-now",
+								"com"
+							],
+							"path": [
+								"api",
+								"now",
+								"v2",
+								"table",
+								"incident"
+							],
+							"query": [
+								{
+									"key": "sysparm_fields",
+									"value": "number,priority,urgency"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Incident Numbers that are of Priority (High)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Tuna@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dev57390.service-now.com/api/now/v2/table/incident?sysparm_fields=number,priority,urgency&priority=1&sysparm_limit=2",
+							"protocol": "https",
+							"host": [
+								"dev57390",
+								"service-now",
+								"com"
+							],
+							"path": [
+								"api",
+								"now",
+								"v2",
+								"table",
+								"incident"
+							],
+							"query": [
+								{
+									"key": "sysparm_fields",
+									"value": "number,priority,urgency"
+								},
+								{
+									"key": "priority",
+									"value": "1"
+								},
+								{
+									"key": "sysparm_limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Incident Numbers (XML)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Tuna@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://dev57390.service-now.com/api/now/v2/table/incident?sysparm_fields=number,priority,urgency&priority=1&sysparm_limit=2",
+							"protocol": "https",
+							"host": [
+								"dev57390",
+								"service-now",
+								"com"
+							],
+							"path": [
+								"api",
+								"now",
+								"v2",
+								"table",
+								"incident"
+							],
+							"query": [
+								{
+									"key": "sysparm_fields",
+									"value": "number,priority,urgency"
+								},
+								{
+									"key": "priority",
+									"value": "1"
+								},
+								{
+									"key": "sysparm_limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Change",
+			"item": [
+				{
+					"name": "Get all change requests",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Tuna@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dev57390.service-now.com/api/now/v2/table/change_request",
+							"protocol": "https",
+							"host": [
+								"dev57390",
+								"service-now",
+								"com"
+							],
+							"path": [
+								"api",
+								"now",
+								"v2",
+								"table",
+								"change_request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all change requests type -> Emergency",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Tuna@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dev57390.service-now.com/api/now/v2/table/change_request?type=emergency",
+							"protocol": "https",
+							"host": [
+								"dev57390",
+								"service-now",
+								"com"
+							],
+							"path": [
+								"api",
+								"now",
+								"v2",
+								"table",
+								"change_request"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "emergency"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
