@@ -1,0 +1,9 @@
+1) nodejs.org -> Download 32/64 installer
+2) After installation, open a new cmd
+	node -v
+	npm -v
+3) npm install -g newman
+4) newman -v
+5) Download collection, environment and globals (to same folder)
+6) Open that folder and run from the cmd line
+	newman run collection.json -e environment.json -g globals.json

@@ -1,0 +1,19 @@
+{
+	"id": "763b1596-a5d2-4838-948b-287ce28ef156",
+	"name": "Development",
+	"values": [
+		{
+			"key": "ServiceNowServer",
+			"value": "dev57390.service-now.com",
+			"enabled": true
+		},
+		{
+			"key": "env_inc_count",
+			"value": 82,
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-02-02T06:52:35.435Z",
+	"_postman_exported_using": "Postman/7.14.0"
+}

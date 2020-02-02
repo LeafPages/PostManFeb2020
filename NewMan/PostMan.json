@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "4dd4fa97-eb44-4ffd-86ca-0bdf39ed4a0b",
+		"name": "Run Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Incident Chaining",
+			"item": [
+				{
+					"name": "Get all Incident Numbers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "02f5072a-24dc-41bb-a64d-1aa7bdafae97",
+								"exec": [
+									"var response = pm.response.json();",
+									"console.log(response);",
+									"",
+									"// Print the number of results (count)",
+									"console.log(\"Original Count\" +response.result.length);",
+									"",
+									"pm.environment.set(\"env_inc_count\", response.result.length);",
+									"var len = response.result.length;",
+									"",
+									"// Print the last sys_id",
+									"var rand = Math.floor(Math.random() * Math.floor(len));",
+									"console.log();",
+									"console.log(response.result[rand].sys_id);",
+									"",
+									"// Set this in global variable",
+									"//pm.globals.set(\"gbl_inc_sys_id\",response.result[len-1].sys_id);",
+									"pm.globals.set(\"gbl_inc_sys_id\",response.result[rand].sys_id);",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"number\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Tuna@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{ServiceNowServer}}/{{resources}}/{{table}}",
+							"protocol": "https",
+							"host": [
+								"{{ServiceNowServer}}"
+							],
+							"path": [
+								"{{resources}}",
+								"{{table}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an existing incident",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Tuna@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://dev57390.service-now.com/api/now/v2/table/incident/{{gbl_inc_sys_id}}",
+							"protocol": "https",
+							"host": [
+								"dev57390",
+								"service-now",
+								"com"
+							],
+							"path": [
+								"api",
+								"now",
+								"v2",
+								"table",
+								"incident",
+								"{{gbl_inc_sys_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Incident Numbers Count and Confirm Reduction",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "02f5072a-24dc-41bb-a64d-1aa7bdafae97",
+								"exec": [
+									"var response = pm.response.json();",
+									"console.log(response);",
+									"",
+									"// Print the number of results (count)",
+									"console.log(\"Reduced Count\" +response.result.length)",
+									"var len = response.result.length;",
+									"",
+									"if(response.result.length + 1 == pm.environment.get(\"env_inc_count\")){",
+									"    console.log(\"Count Matches after deletion\");",
+									"} else{",
+									"    console.log(\"Something wrong\");",
+									"}",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "Tuna@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{ServiceNowServer}}/{{resources}}/{{table}}",
+							"protocol": "https",
+							"host": [
+								"{{ServiceNowServer}}"
+							],
+							"path": [
+								"{{resources}}",
+								"{{table}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "11552a97-231d-4cb9-924b-24822c84872a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "aa60b06b-bbf0-4c5f-a730-35a9f1311657",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "328c1088-7be9-44db-9d14-6c46220f31b5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "286a5ba3-c51a-4183-8f47-f25d62108234",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "48e2a606-5742-4f97-8785-1b9284d41500",
+			"key": "table",
+			"value": "incident",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
